@@ -3,7 +3,6 @@ const app = express();
 const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const authRoute = require("./routes/auth");
-const PORT = 3000;
 
 require("dotenv").config();
 const mongoose = require("mongoose");
@@ -25,4 +24,6 @@ app.get("/", (req, res) => {
     res.send("hello express");
 });
 
-app.listen(PORT, () => console.log("サーバー起動"));
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`listening on ${process.env.PORT || 3000}`);
+});
