@@ -4,6 +4,8 @@ const User = require("../modules/User")
 // ユーザー登録
 router.post("/register", async (req, res) => {
     try {
+        const existUser = await User.findOne({ email: req.body.email });
+        if(existUser) return res.status(404).send("既に使われてるemailアドレスです。");
         const newUser = await new User({
             username: req.body.username,
             email: req.body.email,

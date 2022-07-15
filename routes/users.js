@@ -34,12 +34,18 @@ router.delete("/:id", async(req, res) => {
     }
 })
 
-// ユーザー情報の取得
-router.get("/:id", async(req, res) => {
+// クエリからユーザー情報を取得
+router.get("/", async(req, res) => {
+    const userId = req.query.userId;
+    const username = req.query.username;
+
     try {
-        const user = await User.findById(req.params.id);
+        const user = userId
+          ? await User.findById(userId)
+          : await User.findOne({ username: username });
+
         const { password, updatedAt, ...othre } = user._doc;
-        res.status(200).json(othre);
+        return res.status(200).json(othre);
 
     } catch (err) {
         return res.status(500).json(err);
