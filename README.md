@@ -1,5 +1,9 @@
 # real-sns
 
+snsサービスの基盤
+
+<img width="1606" alt="スクリーンショット 2022-07-15 15 58 54" src="https://user-images.githubusercontent.com/68207981/179169257-5b1e75b8-9e92-45da-9e4d-f8e8b6147f7a.png">
+
 ## 使用技術
 フロント
 react
