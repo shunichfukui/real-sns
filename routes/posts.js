@@ -97,4 +97,16 @@ router.get("/profile/:userId", async(req, res) => {
     }
 })
 
+router.get("/timeline/:userId", async(req, res) => {
+    try {
+        const user = await User.findById(req.params.userId);
+        const posts = await Post.find({
+            userId: user._id
+        });
+        return res.status(200).json(posts);
+    } catch (err) {
+        return res.status(500).json(err);
+    }
+})
+
 module.exports = router;
